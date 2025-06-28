@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0d1117, #1e1e2f, #015ba4);
+      box-shadow: inset 0 0 100px #58a6ff22;
+      color: rgb(0, 58, 31);
+    }
+
+    nav {
+      background-color: #161b22;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 10%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #58a6ff;
+    }
+
+    nav a {
+      position: relative;
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background-color: #58a6ff;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #58a6ff;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    .container {
+      height: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 10%;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .left {
+      flex: 1;
+      max-width: 500px;
+    }
+
+    .left h3 {
+      font-size: 24px;
+      color: white;
+    }
+
+    .left h1 {
+      font-size: 48px;
+      margin: 10px 0;
+      color: #58a6ff;
+    }
+
+    .left h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: white;
+    }
+
+    .highlight {
+      color: #7ee787;
+    }
+
+    .left p {
+      font-size: 16px;
+      color: #c9d1d9;
+      margin-bottom: 25px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .social-icons a {
+      color: #7ee787;
+      font-size: 22px;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: #58a6ff;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      background-color: #58a6ff;
+      color: #0d1117;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: #1f6feb;
+      color: white;
+    }
+
+    .right {
+      flex: 1;
+      text-align: center;
+    }
+
+    .img-style {
+      width: 250px;
+      height: 280px;
+      border-radius: 50%;
+      border: 2px solid #4163dd;
+      box-shadow: 0 0 35px #357eae, 0 0 30px #00ffcc66;
+      max-width: 100%;
+    }
+
+    .intro-text {
+      font-size: 16px;
+      color: #c9d1d9;
+      line-height: 1.6;
+      margin-top: 20px;
+      max-width: 500px;
+      text-align: justify;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .highlight {
+      color: #58a6ff;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 30px 5%;
+      }
+      .left, .right {
+        max-width: 100%;
+        text-align: center;
+      }
+      .left h1 {
+        font-size: 36px;
+      }
+      .left h2, .left h3 {
+        font-size: 20px;
+      }
+      .img-style {
+        width: 200px;
+        height: 220px;
+        margin-top: 20px;
+      }
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Portfolio.</div>
+    <div>
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="left">
+      <h3>Hello, It's me</h3>
+      <h1>Saad Web Developer</h1>
+      <h2>And I'm a <span class="highlight">Frontend Developer</span></h2>
+      <p class="intro-text">
+  I specialize in building <span class="highlight">clean</span>, <span class="highlight">responsive</span>, and <span class="highlight">modern</span> websites that are both user-friendly and visually stunning.
+</p>
+
+
+
+
+
+
+<div class="social-icons">
+  <a href="https://www.facebook.com/YourUsername" target="_blank"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://www.twitter.com/YourHandle" target="_blank"><i class="fab fa-twitter"></i></a>
+  <a href="https://www.github.com/YourUsername" target="_blank"><i class="fab fa-github"></i></a>
+  <a href="https://www.linkedin.com/in/YourProfileID" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+</div>
+     <a href="Saad-CV.pdf" download="Saad-CV.pdf" class="btn">Download My CV</a>
+    </div>
+
+    <div class="right">
+      <img src="Screenshot 2025-04-06 033140.png" alt="Developer" class="img-style">
+    </div>
+  </div>
+
+</body>
+</html>

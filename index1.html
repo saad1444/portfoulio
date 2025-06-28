@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barber Shop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            background: #222;
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            color: #ff4500;
+        }
+        nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 18px;
+    position: relative; /* Required for pseudo-element positioning */
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Space below the text */
+    width: 0;
+    height: 2px; /* Thickness of the underline */
+    background: #ff4500;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%; /* Fully underline on hover */
+}
+
+
+.section {
+    padding: 20px;
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.services,
+.team {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+    grid-template-columns: repeat(3, 1fr);  /* 3 columns */
+}
+
+.service-item,
+.team-member {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item img,
+.team-member img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.service-item h3,
+.team-member h3 {
+    margin: 10px 0;
+}
+
+.service-item:hover img,
+.team-member:hover img {
+    transform: scale(1.1); /* Slight zoom effect */
+}
+
+.service-item:hover,
+.team-member:hover {
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+}
+
+
+        .service-item p,
+        .team-member p {
+            color: #555;
+        }
+        .service-item img,
+.team-member img {
+    width: 290px; /* Fix the width */
+    height: 290px; /* Fix the height */
+    object-fit: cover; /* Ensure the image covers the area proportionally */
+    border-radius: 8px; /* Optional: Keep rounded corners */
+    display: block; /* Ensure no inline space affects layout */
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+
+        .book-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .book-form input,
+        .book-form select,
+        .book-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .book-form button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .book-form button:hover {
+            background: #ff4500;
+        }
+
+        footer {
+            text-align: center;
+            background: #222;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Barber Shop</h1>
+        <p>Your perfect cut, every time!</p>
+    </header>
+
+    <nav>
+        <a href="#" onclick="showSection('home')">Home</a>
+        <a href="#" onclick="showSection('services')">Services</a>
+        <a href="#" onclick="showSection('book')">Book Appointment</a>
+        <a href="#" onclick="showSection('contact')">Contact</a>
+    </nav>
+
+    <div id="home" class="section active">
+        <h2>Welcome to Our Barber Shop</h2>
+        <p>We offer the best haircuts and grooming services to keep you looking sharp.</p>
+        <h3>Meet Our Team</h3>
+        <div class="team">
+            <div class="team-member">
+                <img src="download.jpeg" alt="Barber 1">
+                <h3>John Doe</h3>
+                <p>Expert in modern haircuts</p>
+            </div>
+            <div class="team-member">
+                <img src="s1.avif" alt="Barber 2">
+                <h3>Jane Smith</h3>
+                <p>Specialist in beard grooming</p>
+            </div>
+            <div class="team-member">
+                <img src="s2.avif" alt="Barber 3">
+                <h3>Mark Lee</h3>
+                <p>Traditional cuts and styles</p>
+            </div>
+            <!-- Adding 12 more team members images -->
+            <div class="team-member">
+                <img src="s3.avif" alt="Barber 4">
+                <h3>Lisa Johnson</h3>
+                <p>Master in fades and trims</p>
+            </div>
+            <div class="team-member">
+                <img src="s4.avif" alt="Barber 5">
+                <h3>David Brown</h3>
+                <p>Classic barber with over 10 years of experience</p>
+            </div>
+            <div class="team-member">
+                <img src="s5.avif" alt="Barber 6">
+                <h3>Emily Clark</h3>
+                <p>Expert in stylish and trendy cuts</p>
+            </div>
+            <div class="team-member">
+                <img src="s6.avif" alt="Barber 7">
+                <h3>Tom Harris</h3>
+                <p>Beard and mustache specialist</p>
+            </div>
+            <div class="team-member">
+                <img src="s7.webp" alt="Barber 8">
+                <h3>Amy Taylor</h3>
+                <p>Expert in luxury grooming</p>
+            </div>
+            <div class="team-member">
+                <img src="s8.webp" alt="Barber 9">
+                <h3>Chris Walker</h3>
+                <p>Master of shaves and cuts</p>
+            </div>
+            <div class="team-member">
+                <img src="s9.jpg" alt="Barber 10">
+                <h3>Anna White</h3>
+                <p>Specializes in high-end styling</p>
+            </div>
+            <div class="team-member">
+                <img src="s10.jpg" alt="Barber 11">
+                <h3>Mark Davis</h3>
+                <p>Famous for his quick cuts and precise detailing</p>
+            </div>
+            <div class="team-member">
+                <img src="s11.jpg" alt="Barber 12">
+                <h3>Jessica Green</h3>
+                <p>Top stylist in the area</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="services" class="section">
+        <h2>Our Services</h2>
+        <div class="services">
+            <div class="service-item">
+                <img src="s1.avif" alt="Haircut">
+                <h3>Haircut</h3>
+                <p>A stylish cut to keep you fresh.</p>
+            </div>
+            <div class="service-item">
+                <img src="s9.jpg" alt="Beard Trim">
+                <h3>Beard Trim</h3>
+                <p>Shaped and styled to perfection.</p>
+            </div>
+            <div class="service-item">
+                <img src="sa1.webp" alt="Shaving">
+                <h3>Shaving</h3>
+                <p>Close shave with a hot towel treatment.</p>
+            </div>
+            <!-- Adding 22 more service images -->
+            <div class="service-item">
+                <img src="s6.avif" alt="Hair Styling">
+                <h3>Hair Styling</h3>
+                <p>Perfect for any special occasion.</p>
+            </div>
+            <div class="service-item">
+                <img src="sa2.webp" alt="Hair Coloring">
+                <h3>Hair Coloring</h3>
+                <p>Get the color you always wanted.</p>
+            </div>
+            <div class="service-item">
+                <img src="sa3.avif" alt="Waxing">
+                <h3>Waxing</h3>
+                <p>Say goodbye to unwanted hair.</p>
+            </div>
+            <div class="service-item">
+                <img src="sa4.avif" alt="Scalp Treatment">
+                <h3>Scalp Treatment</h3>
+                <p>Revitalize your scalp with a relaxing treatment.</p>
+            </div>
+            <div class="service-item">
+                <img src="sa5.webp" alt="Facial">
+                <h3>Facial</h3>
+                <p>Perfect for freshening up your skin.</p>
+            </div>
+            <div class="service-item">
+                <img src="sa6.webp" alt="Shampoo & Conditioning">
+                <h3>Shampoo & Conditioning</h3>
+                <p>Cleanse and nourish your hair.</p>
+            </div>
+            <div class="service-item">
+                <img src="sa7.avif" alt="Head Massage">
+                <h3>Head Massage</h3>
+                <p>A soothing head massage for ultimate relaxation.</p>
+            </div>
+            <div class="service-item">
+                <img src="sa8.webp" alt="Beard Styling">
+                <h3>Beard Styling</h3>
+                <p>Keep your beard looking sharp.</p>
+            </div>
+            <div class="service-item">
+                <img src="sa9.webp" alt="Hot Towel Shave">
+                <h3>Hot Towel Shave</h3>
+                <p>Experience the classic shave.</p>
+            </div>
+            <div class="service-item">
+                <img src="sa11.avif" alt="Mustache Styling">
+                <h3>Mustache Styling</h3>
+                <p>Keep your mustache in check.</p>
+            </div>
+            <div class="service-item">
+                <img src="sa12.webp" alt="Hair Repair">
+                <h3>Hair Repair</h3>
+                <p>Fix dry, damaged hair with our treatments.</p>
+            </div>
+            <div class="service-item">
+                <img src="sa13.webp" alt="Eyebrow Grooming">
+                <h3>Eyebrow Grooming</h3>
+                <p>Perfectly shaped brows for a sharp look.</p>
+            </div>
+            <div class="service-item">
+                <img src="sa14.webp" alt="Nail Care">
+                <h3>Nail Care</h3>
+                <p>Take care of your hands and feet.</p>
+            </div>
+            <div class="service-item">
+                <img src="sa15.avif" alt="Kids Haircut">
+                <h3>Kids Haircut</h3>
+                <p>Stylish cuts for little ones.</p>
+            </div>
+            <div class="service-item">
+                <img src="sa16.avif" alt="Grooming for Events">
+                <h3>Grooming for Events</h3>
+                <p>Get ready for weddings, parties, and more.</p>
+            </div>
+            </div>
+    </div>
+
+    <div id="book" class="section">
+        <h2>Book an Appointment</h2>
+        <form class="book-form">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label for="service">Select Service</label>
+<select id="service" style="width: 100%; padding: 10px; font-size: 16px; border: 1px solid #ddd; border-radius: 5px;">
+    <optgroup label="Hair Services">
+        <option value="Haircut">Haircut</option>
+        <option value="Hair Coloring">Hair Coloring</option>
+        <option value="Hair Styling">Hair Styling</option>
+        <option value="Hair Wash">Hair Wash</option>
+    </optgroup>
+    <optgroup label="Beard Services">
+        <option value="Beard Trim">Beard Trim</option>
+        <option value="Beard Styling">Beard Styling</option>
+        <option value="Beard Coloring">Beard Coloring</option>
+    </optgroup>
+    <optgroup label="Shaving">
+        <option value="Classic Shaving">Classic Shaving</option>
+        <option value="Hot Towel Shave">Hot Towel Shave</option>
+    </optgroup>
+    <optgroup label="Special Services">
+        <option value="Facial">Facial</option>
+        <option value="Massage">Massage</option>
+        <option value="Scalp Treatment">Scalp Treatment</option>
+    </optgroup>
+</select>
+
+
+            <label for="date">Appointment Date</label>
+            <input type="date" id="date" required>
+
+            <label for="time">Appointment Time</label>
+            <input type="time" id="time" required>
+
+            <button type="button" onclick="submitBooking()">Book Now</button>
+        </form>
+    </div>
+
+    <div id="contact" class="section">
+        <h2>Contact Us</h2>
+        <form class="book-form" onsubmit="submitContactForm(event)">
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" placeholder="Enter your name" required>
+    
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" placeholder="Enter your email" required>
+    
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" rows="5" placeholder="Your message" required></textarea>
+    
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    
+
+    <footer style="background: #222; color: white; padding: 20px; text-align: center;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1200px; margin: 0 auto;">
+            <!-- About Section -->
+            <div style="flex: 1 1 300px; padding: 10px;">
+                <h3>About Us</h3>
+                <p>
+                    Barber Shop offers professional grooming services to give you the perfect look. We combine style, comfort, and expertise in one place.
+                </p>
+            </div>
+    
+            <!-- Quick Links -->
+            <div style="flex: 1 1 300px; padding: 10px;">
+                <h3>Quick Links</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="#home" style="color: #ff4500; text-decoration: none;">Home</a></li>
+                    <li><a href="#services" style="color: #ff4500; text-decoration: none;">Services</a></li>
+                    <li><a href="#about" style="color: #ff4500; text-decoration: none;">About</a></li>
+                    <li><a href="#contact" style="color: #ff4500; text-decoration: none;">Contact</a></li>
+                </ul>
+            </div>
+    
+            <!-- Contact Details -->
+            <div style="flex: 1 1 300px; padding: 10px;">
+                <h3>Contact Us</h3>
+                <p>123 Barber Street, City Name</p>
+                <p>Phone: (123) 456-7890</p>
+                <p>Email: info@barbershop.com</p>
+            </div>
+        </div>
+    
+        <!-- Social Media Icons -->
+        <div style="margin-top: 20px;">
+            <a href="#" style="margin: 0 10px; color: #ff4500; font-size: 24px; text-decoration: none;">
+                <i class="fab fa-facebook-f"></i> <!-- Font Awesome Icon -->
+            </a>
+            <a href="#" style="margin: 0 10px; color: #ff4500; font-size: 24px; text-decoration: none;">
+                <i class="fab fa-instagram"></i> <!-- Font Awesome Icon -->
+            </a>
+            <a href="#" style="margin: 0 10px; color: #ff4500; font-size: 24px; text-decoration: none;">
+                <i class="fab fa-twitter"></i> <!-- Font Awesome Icon -->
+            </a>
+        </div>
+    
+        <!-- Copyright -->
+        <p style="margin-top: 20px;">&copy; 2025 Barber Shop. All Rights Reserved.</p>
+    </footer>
+    
+
+    <script>
+ function showSection(sectionId) {
+        document.querySelectorAll('.section').forEach(section => {
+            section.classList.remove('active');
+        });
+        document.getElementById(sectionId).classList.add('active');
+    }
+
+    function submitBooking() {
+        alert("Your appointment has been booked successfully!");
+        showSection('home');
+    }
+
+    function submitContactForm(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+        alert("Your message has been sent successfully!");
+    }
+    </script>
+</body>
+</html>

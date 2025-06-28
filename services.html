@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Services | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0d1117, #1e1e2f, #015ba4);
+      box-shadow: inset 0 0 100px #58a6ff22;
+      color: rgb(0, 58, 31);
+    }
+
+    nav {
+      background-color: #161b22;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 10%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #58a6ff;
+    }
+
+    nav a {
+      position: relative;
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background-color: #58a6ff;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #58a6ff;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    .container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 60px 10%;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .left {
+      flex: 1;
+      text-align: center;
+    }
+
+    .left img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      border: 2px solid #4163dd;
+      box-shadow: 0 0 35px #357eae, 0 0 30px #00ffcc66;
+      max-width: 100%;
+    }
+
+    .content {
+      flex: 2;
+      padding-left: 40px;
+    }
+
+    .content h1 {
+      font-size: 36px;
+      color: white;
+    }
+
+    .content h1 span {
+      color: #7ee787;
+    }
+
+    .content h2 {
+      font-size: 22px;
+      color: #58a6ff;
+      margin: 15px 0;
+    }
+
+    .content p {
+      color: #c9d1d9;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    #moreText {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+
+    #moreText.show {
+      max-height: 500px;
+    }
+
+    .read-more-btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #58a6ff;
+      color: #0d1117;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .read-more-btn:hover {
+      background-color: #1f6feb;
+      color: white;
+    }
+
+    .services-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 60px 10%;
+      gap: 30px;
+    }
+
+    .card {
+      background-color: #161b22;
+      width: 300px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00000055;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: #58a6ff;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #c9d1d9;
+      margin-bottom: 15px;
+    }
+
+    .card button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #58a6ff;
+      color: #0d1117;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background-color: #1f6feb;
+      color: white;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+      background-color: #161b22;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+      color: white;
+    }
+
+    .close {
+      float: right;
+      font-size: 24px;
+      cursor: pointer;
+      color: #58a6ff;
+    }
+
+    .close:hover {
+      color: red;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 5%;
+      }
+
+      nav a {
+        margin: 5px 0;
+      }
+
+      .container, .services-container {
+        padding: 30px 5%;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .content {
+        padding-left: 0;
+        text-align: center;
+      }
+
+      .content h1 {
+        font-size: 28px;
+      }
+
+      .content h2 {
+        font-size: 20px;
+      }
+
+      .left img {
+        width: 200px;
+        height: 200px;
+      }
+
+      .card {
+        width: 100%;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Portfolio.</div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <div class="services-container">
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/000000/code.png" alt="UI UX">
+      <h3>UI/UX Design</h3>
+      <p>Beautiful and user-friendly interface designs.</p>
+      <button onclick="openModal('uiux')">Explore</button>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/000000/web.png" alt="Web Dev">
+      <h3>Web Development</h3>
+      <p>Responsive websites using modern tech.</p>
+      <button onclick="openModal('web')">Explore</button>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/fluency/96/source-code.png" alt="Frontend">
+
+      <h3>Frontend Skills</h3>
+      <p>Mastery in HTML, CSS, JavaScript & more.</p>
+      <button onclick="openModal('frontend')">Explore</button>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/000000/computer-support.png" alt="Support">
+      <h3>Support</h3>
+      <p>24/7 quick support available for all clients.</p>
+      <button onclick="openModal('support')">Explore</button>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/000000/console.png" alt="JS">
+      <h3>JavaScript Projects</h3>
+      <p>Dynamic apps and effects using JS.</p>
+      <button onclick="openModal('js')">Explore</button>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/000000/task.png" alt="ToDo">
+      <h3>To-Do & Blog Apps</h3>
+      <p>Clean and functional task & blog apps.</p>
+      <button onclick="openModal('todo')">Explore</button>
+    </div>
+  </div>
+
+  <!-- Modal Structure -->
+  <div class="modal" id="serviceModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("serviceModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDesc = document.getElementById("modalDescription");
+
+    const contentMap = {
+      uiux: {
+        title: "UI/UX Design",
+        desc: "I create clean, intuitive interfaces that provide great user experience using tools like Figma, Adobe XD, and CSS frameworks."
+      },
+      web: {
+        title: "Web Development",
+        desc: "I build fast, responsive, and modern websites using HTML5, CSS3, JavaScript, and Bootstrap."
+      },
+      frontend: {
+        title: "Frontend Skills",
+        desc: "Expertise in HTML, CSS, JavaScript, Bootstrap, DOM Manipulation, and creating interactive web interfaces."
+      },
+      support: {
+        title: "Client Support",
+        desc: "Offering continuous support, troubleshooting, and maintenance for deployed websites and apps."
+      },
+      js: {
+        title: "JavaScript Projects",
+        desc: "Building real-world applications like weather apps, calculators, and animations using JavaScript."
+      },
+      todo: {
+        title: "To-Do & Blog Apps",
+        desc: "Experience building task management tools and blogs with local storage, responsiveness, and beautiful UI."
+      }
+    };
+
+    function openModal(type) {
+      const content = contentMap[type];
+      modalTitle.textContent = content.title;
+      modalDesc.textContent = content.desc;
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>

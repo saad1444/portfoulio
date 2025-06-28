@@ -1,0 +1,167 @@
+<!-- PROJECTS.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Projects | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0d1117, #1e1e2f, #015ba4);
+      box-shadow: inset 0 0 100px #58a6ff22;
+      color: white;
+      overflow-x: hidden;
+    }
+    nav {
+      background-color: #161b22;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 10%;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #58a6ff;
+    }
+    nav a {
+      position: relative;
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background-color: #58a6ff;
+      transition: width 0.3s ease;
+    }
+    nav a:hover,
+    nav a.active {
+      color: #58a6ff;
+    }
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+    .container {
+      padding: 60px 10%;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .project-card {
+      background-color: #161b22;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00000033;
+      transition: transform 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+    .project-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .project-card h3 {
+      color: #7ee787;
+      margin-bottom: 10px;
+    }
+    .project-card p {
+      color: #c9d1d9;
+      font-size: 14px;
+    }
+    .project-card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: #58a6ff;
+      color: #0d1117;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .project-card a:hover {
+      background-color: #1f6feb;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 5%;
+      }
+
+      nav a {
+        margin: 5px 0;
+      }
+
+      .container {
+        padding: 30px 5%;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card img {
+        height: auto;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Portfolio.</div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+  <div class="container">
+    <h1 style="text-align: center; margin-bottom: 30px;">My Projects</h1>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="baaa.jpeg" alt="Project 1">
+        <h3>Barber Website</h3>
+        <p>Fully responsive shopping platform built with HTML, CSS & JS.</p>
+        <a href="index1.html">View Project</a>
+      </div>
+      <div class="project-card">
+        <img src="saaaa.jpeg" alt="Project 2">
+        <h3>Cafe Website</h3>
+        <p>Personal branding site showcasing skills and projects.</p>
+        <a href="index2.html">View Project</a>
+      </div>
+      <div class="project-card">
+        <img src="babababa.jpeg" alt="Project 3">
+        <h3>Travel Website</h3>
+        <p>JavaScript-based live weather fetching app using API.</p>
+        <a href="index3.html">View Project</a>
+      </div>
+      
+    </div>
+  </div>
+</body>
+</html>

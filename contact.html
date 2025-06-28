@@ -1,0 +1,197 @@
+<!-- CONTACT.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0d1117, #1e1e2f, #015ba4);
+      box-shadow: inset 0 0 100px #58a6ff22;
+      color: white;
+      overflow-x: hidden;
+    }
+    nav {
+      background-color: #161b22;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 10%;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #58a6ff;
+    }
+    nav a {
+      position: relative;
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background-color: #58a6ff;
+      transition: width 0.3s ease;
+    }
+    nav a:hover,
+    nav a.active {
+      color: #58a6ff;
+    }
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+    .container {
+      padding: 60px 10%;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #58a6ff;
+    }
+    form {
+      background-color: #161b22;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00000033;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      background-color: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+    }
+    form input:focus, form textarea:focus {
+      outline: none;
+      border-color: #58a6ff;
+      box-shadow: 0 0 5px #58a6ff99;
+    }
+    form button {
+      padding: 12px 25px;
+      background-color: #58a6ff;
+      color: #0d1117;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background-color: #1f6feb;
+      color: white;
+    }
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      color: #8b949e;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 5%;
+      }
+
+      nav a {
+        margin: 10px 0;
+      }
+
+      .container {
+        padding: 30px 5%;
+      }
+
+      form {
+        padding: 20px;
+      }
+
+      form input, form textarea {
+        padding: 12px;
+        font-size: 15px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      form button {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 20px;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
+
+      form input, form textarea {
+        font-size: 14px;
+      }
+
+      form button {
+        font-size: 15px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Portfolio.</div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Contact Me</h1>
+    <form id="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="6" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>© <span id="year"></span> Saad Developer. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Thank you! Your message has been sent.");
+      this.reset();
+    });
+  </script>
+</body>
+</html>

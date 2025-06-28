@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0d1117, #1e1e2f, #015ba4);
+      box-shadow: inset 0 0 100px #58a6ff22;
+      color: rgb(0, 58, 31);
+    }
+
+    nav {
+      background-color: #161b22;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 10%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #58a6ff;
+    }
+
+    nav a {
+      position: relative;
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background-color: #58a6ff;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #58a6ff;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    .container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 60px 10%;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .left {
+      flex: 1;
+      text-align: center;
+    }
+
+    .left img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      border: 2px solid #4163dd;
+      box-shadow: 0 0 35px #357eae, 0 0 30px #00ffcc66;
+      max-width: 100%;
+    }
+
+    .content {
+      flex: 2;
+      padding-left: 40px;
+    }
+
+    .content h1 {
+      font-size: 36px;
+      color: white;
+    }
+
+    .content h1 span {
+      color: #7ee787;
+    }
+
+    .content h2 {
+      font-size: 22px;
+      color: #58a6ff;
+      margin: 15px 0;
+    }
+
+    .content p {
+      color: #c9d1d9;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    #moreText {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+
+    #moreText.show {
+      max-height: 500px;
+    }
+
+    .read-more-btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #58a6ff;
+      color: #0d1117;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .read-more-btn:hover {
+      background-color: #1f6feb;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 30px 5%;
+      }
+
+      .left, .content {
+        width: 100%;
+        padding: 0;
+        text-align: center;
+      }
+
+      .content {
+        padding-top: 20px;
+      }
+
+      .content h1 {
+        font-size: 28px;
+      }
+
+      .content h2 {
+        font-size: 20px;
+      }
+
+      .left img {
+        width: 200px;
+        height: 200px;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 5%;
+      }
+
+      nav a {
+        margin: 5px 0;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Portfolio.</div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="left">
+      <img src="Screenshot 2025-04-06 033140.png" alt="Me">
+    </div>
+    <div class="content">
+      <h1>About <span>Me</span></h1>
+      <h2>Frontend Developer</h2>
+      <p>I have successfully completed the "Introduction to Programming" course, where I learned the foundations of HTML, CSS, JavaScript, and Bootstrap.</p>
+      <p>I also completed the "Modern Web and App Development" course. In this course, I gained hands-on experience in creating modern websites and web apps using technologies like HTML5, CSS3, JavaScript ES6, Bootstrap 5, and basic GitHub usage.</p>
+      <div id="moreText">
+        <p>Now, I am capable of building beautiful responsive websites, professional portfolios, to-do list apps, simple e-commerce stores, blog websites, and landing pages using modern web technologies like HTML, CSS, JavaScript, and Bootstrap.</p>
+        <p>I can also work with animations, form validations, responsive layout techniques, and deploy projects on GitHub. I continuously improve my skills and keep learning new tools and technologies to become a better frontend developer.</p>
+      </div>
+      <button class="read-more-btn" onclick="toggleText()">Read More</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleText() {
+      const moreText = document.getElementById("moreText");
+      const btn = document.querySelector(".read-more-btn");
+      moreText.classList.toggle("show");
+      btn.textContent = moreText.classList.contains("show") ? "Read Less" : "Read More";
+    }
+  </script>
+</body>
+</html>
